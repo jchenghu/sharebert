@@ -543,52 +543,12 @@ class ShareBertOutput(nn.Module):
 
 class ShareBertEncoder(nn.Module):
     def __init__(self, config, args):
+        # we did not use the transformer kernel
         super(ShareBertEncoder, self).__init__()
         self.config = config
         BertLayerNorm = get_layer_norm_type(config)
         self.FinalLayerNorm = BertLayerNorm(config.hidden_size, eps=1e-5)
-        # evito che usi DeepSpeed
-        # self.is_transformer_kernel = (
-        #     hasattr(args, "deepspeed_transformer_kernel") and args.deepspeed_transformer_kernel
-        # )
         self.is_transformer_kernel = False
-
-        """
-        if hasattr(args, "deepspeed_transformer_kernel") and args.deepspeed_transformer_kernel:
-            from deepspeed import DeepSpeedTransformerConfig, DeepSpeedTransformerLayer
-
-            ds_config = get_deepspeed_config(args)
-            has_huggingface = hasattr(args, "huggingface")
-            ds_transformer_config = DeepSpeedTransformerConfig(
-                batch_size=ds_config.train_micro_batch_size_per_gpu,
-                hidden_size=config.hidden_size,
-                intermediate_size=config.intermediate_size,
-                heads=config.num_attention_heads,
-                attn_dropout_ratio=config.attention_probs_dropout_prob,
-                hidden_dropout_ratio=config.hidden_dropout_prob,
-                num_hidden_layers=config.num_hidden_layers,
-                initializer_range=config.initializer_range,
-                local_rank=args.local_rank if hasattr(args, "local_rank") else -1,
-                seed=args.seed,
-                fp16=ds_config.fp16_enabled,
-                pre_layer_norm=True if "pre-ln" in config.encoder_ln_mode else False,
-                normalize_invertible=args.normalize_invertible,
-                gelu_checkpoint=args.gelu_checkpoint,
-                adjust_init_range=True,
-                attn_dropout_checkpoint=args.attention_dropout_checkpoint,
-                stochastic_mode=args.stochastic_mode,
-                huggingface=has_huggingface,
-                training=self.training,
-            )
-
-            self.layer = nn.ModuleList(
-                [
-                    copy.deepcopy(DeepSpeedTransformerLayer(ds_transformer_config))
-                    for _ in range(config.num_hidden_layers)
-                ]
-            )
-        else:
-        """
 
         layer = ShareBertLayer(config)
         self.layer = nn.ModuleList(
