@@ -1,0 +1,14 @@
+apex==0.1
+datasets==2.0.0
+deepspeed==0.4.3
+h5py==3.8.0
+nltk==3.7
+numpy==1.21.6
+prettytable==3.10.0
+PyYAML==6.0
+PyYAML==6.0.1
+six==1.16.0
+torch==1.12.1+cu113
+tqdm==4.64.0
+transformers==4.4.0
+wikiextractor==3.0.6
