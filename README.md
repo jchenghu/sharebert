@@ -3,7 +3,7 @@
 Implementation of the work "[ShareBERT: Embeddings Are Capable of Learning Hidden Layers](https://ojs.aaai.org/index.php/AAAI/article/view/29781])" [[Pdf](https://ojs.aaai.org/index.php/AAAI/article/view/29781/31348)],
 presented at the 38th Annual AAAI Conference on Artificial Intelligence (AAAI-38).
 
-#### Requirements
+## Requirements
 
 Software:
 - python (>= 3.7)
@@ -26,7 +26,9 @@ Data preparation details can be found in`./dataset/README.md`.
 At the moment the code has been tested on single GPU. Multi-GPU support will be added in the 
 future. Feel free to open an issue if you need it urgently.
 
-#### Pretraining
+## Usage
+
+### Pre-training
 
 Assuming a single GPU the command for the training of ShareBERT Base:
 ```
@@ -82,9 +84,9 @@ training will use the samples located in `<hdf5_dir>` and the final model will b
 Set `factor_size` to 128 for ShareBERT Small, 384 in case of ShareBERT Base, and 768 for ShareBERT Large.
 In the latter case, set also `num_hidden_layers` to 6.
 
-It might be necessary to set `CUDA_VISIBLE_DEVICES=0 python run_pretrainin.py ...` for some environment.
+It might be necessary to set `CUDA_VISIBLE_DEVICES=0 python run_pretrainin.py ...` in some environments.
 
-#### Fine-Tuning
+### Fine-Tuning
 
 Fine-Tuning command:
 ```
@@ -111,11 +113,11 @@ python run_glue.py \
 ```
 where `<task_name>` can be `sst2, mnli, qqp, mrpc, cola, stsb, rte,` or `qnli`
 
-#### Pretrained models
+### Pretrained models
 
 Pretrained models can be found in the following [drive](https://drive.google.com/file/d/1U36Bov_C-EjOGJmXeNqWzLw7_eEb344l/view?usp=sharing).
 
-#### Acknowledgment
+## Acknowledgments
 
 If you find this repository useful, please consider citing (no obligation):
 ```
