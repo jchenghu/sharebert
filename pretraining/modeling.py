@@ -557,7 +557,6 @@ class ShareBertEncoder(nn.Module):
 
     def add_attention(self, all_attentions, attention_probs):
         if attention_probs is not None:
-            raise RuntimeError
             all_attentions.append(attention_probs)
 
         return all_attentions
