@@ -1,6 +1,6 @@
 ## ShareBERT: Embeddings Are Capable of Learning Hidden Layers
 
-Implementation of the work "[ShareBERT: Embeddings Are Capable of Learning Hidden Layers](https://ojs.aaai.org/index.php/AAAI/article/view/29781])" [[Pdf](https://ojs.aaai.org/index.php/AAAI/article/view/29781/31348)],
+Implementation of the work "[ShareBERT: Embeddings Are Capable of Learning Hidden Layers](https://ojs.aaai.org/index.php/AAAI/article/view/29781)" [[Pdf](https://ojs.aaai.org/index.php/AAAI/article/view/29781/31348)],
 presented at the 38th Annual AAAI Conference on Artificial Intelligence (AAAI-38).
 
 ## Requirements
